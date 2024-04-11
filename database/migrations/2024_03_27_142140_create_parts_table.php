@@ -16,12 +16,11 @@ return new class extends Migration
             $table->timestamps();
             $table->string('title');
             $table->string('type');
-            $table->string('description');
+            $table->text('description');
             $table->float('price');
-            $table->string('photo');
+            $table->string('image');
             $table->string('status');
-            $table->timestamp('added_at');
-            $table->foreignIdFor(\App\Models\Order::class)->constrained()->deferrable();
+            $table->foreignIdFor(\App\Models\Order::class)->nullable()->constrained();
         });
     }
 
