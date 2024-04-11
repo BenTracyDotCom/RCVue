@@ -1,11 +1,10 @@
 <template>
   <div>
-    <input type="checkbox" id="part" />
     <label for="part">{{ label }}</label>
     <h1>{{ title }}</h1>
     <p>{{ description }}</p>
     <div>{{ price }}</div>
-    <img :src="src" />
+    <img :src="image" />
   </div>
 </template>
 <script>
