@@ -11,7 +11,7 @@ class PartController extends Controller
 {
   //Show all parts
   public function index() {
-    $parts = Part::orderBy('added_at', 'desc')->get();
+    $parts = Part::orderBy('created_at', 'desc')->get();
     //the second argument below is passing an associative array as a second argument
     return view('parts.index', ['parts' => $parts]);
   }
