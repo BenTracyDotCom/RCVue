@@ -16,10 +16,10 @@ return new class extends Migration
             $table->timestamps();
             $table->timestamp('purchased_on');
             $table->integer('user_id');
-            $table->timestamp('shipped_on');
-            $table->boolean('has_shipped');
-            $table->string('tracking');
-            $table->timestamp('delivered');
+            $table->timestamp('shipped_on')->nullable();
+            $table->boolean('has_shipped')->nullable();
+            $table->string('tracking')->nullable();
+            $table->timestamp('delivered')->nullable();
         });
     }
 

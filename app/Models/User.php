@@ -64,6 +64,6 @@ class User extends Authenticatable
 
     public function parts()
     {
-      return $this->hasMany(Part::class);
+      return $this->belongsToMany(Part::class, 'part_user');
     }
 }

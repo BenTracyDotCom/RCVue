@@ -13,4 +13,9 @@ class Cart extends Model
     {
       return $this->belongsTo(User::class);
     }
+
+    public function Parts()
+    {
+      return $this->belongsToMany(Part::class, 'cart_part');
+    }
 }
