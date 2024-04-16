@@ -22,7 +22,7 @@ class Part extends Model
 
     public function carts()
     {
-      return $this->belongsToMany(Part::class);
+      return $this->belongsToMany(Cart::class);
     }
 
     protected $fillable = ['title', 'type', 'description', 'price', 'image'];
