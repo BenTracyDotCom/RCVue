@@ -22,7 +22,7 @@ class PartFactory extends Factory
             ', 'camera', 'rx', 'tx', 'parbuild', 'built', 'prop', 'fc', 'accessory', 'digital', 'vtx', 'vrx' ]),
             'description' => fake()->paragraphs(3, true),
             'price' => fake()->randomFloat(2, 0.25),
-            'image' => fake()->imageUrl(),
+            'image' => fake()->imageUrl(244, 244),
             'status' => fake()->randomElement(['available', 'sold', 'shipped']),
             'order_id' => null,
         ];
