@@ -1,5 +1,6 @@
 <script setup>
 import PartTile from '../Components/PartTile.vue';
+import axios from 'axios';
 // Do all importing here
 </script>
 
@@ -40,5 +41,17 @@ export default {
       ],
     };
   },
+  mounted() {
+    this.fetchAvailableParts();
+  },
+  methods: {
+    fetchAvailableParts() {
+      axios.get('api/parts')
+      .then(res => {
+        this.parts = res.data;
+      })
+      .catch(console.error)
+    }
+  }
 }
 </script>
