@@ -5,6 +5,7 @@ import Dropdown from '@/Components/Dropdown.vue';
 import TextInput from '@/Components/TextInput.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
+import VueSelectImage from 'vue-select-image';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
 const form = useForm({
@@ -21,6 +22,10 @@ const submit = () => {
   form.post(route('parts.create'), {
     onFinish: () => form.reset()
   });
+}
+
+const onSelectImage = (e) => {
+  console.log(e)
 }
 </script>
 
@@ -58,6 +63,11 @@ const submit = () => {
         <InputLabel for="price" value="Sale price" />
         <input type="number" step="0.01" id="price" v-model="form.price"/>
       </div>
+<vue-select-image
+:dataImages="dataImages"
+@onselectimage="onSelectImage"
+>
+</vue-select-image>
       <PrimaryButton>Add Part</PrimaryButton>
     </form>
   </AuthenticatedLayout>
