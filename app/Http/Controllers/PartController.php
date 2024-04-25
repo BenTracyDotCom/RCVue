@@ -28,6 +28,8 @@ class PartController extends Controller
     $request->validate([
       'title' => 'required',
       'description' => 'required',
+      'ipaid' => 'required',
+      'price' => 'required',
       'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     ]);
 
@@ -41,10 +43,5 @@ class PartController extends Controller
 
     $part->save();
     return redirect()->route('parts.index')->with('success', 'Part created successfully.');
-  }
-  //Get available parts
-  public function getAvailableParts(Request $request) {
-    $availableParts = Part::available()->get();
-    return $availableParts;
   }
 }
