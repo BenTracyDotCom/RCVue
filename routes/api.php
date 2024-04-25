@@ -10,3 +10,5 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::get('/parts', [PartController::class,'getAvailableParts']);
+
+Route::get('/parts/create', [PartController::class,'']);

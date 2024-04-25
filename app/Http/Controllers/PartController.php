@@ -44,4 +44,11 @@ class PartController extends Controller
     $part->save();
     return redirect()->route('parts.index')->with('success', 'Part created successfully.');
   }
+
+  //get available parts
+  public function getAvailableParts(Request $request)
+  {
+    $availableParts = Part::available()->get();
+    return $availableParts;
+  }
 }
