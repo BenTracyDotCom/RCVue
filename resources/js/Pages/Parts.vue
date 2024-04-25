@@ -23,22 +23,7 @@ export default {
   },
   data() {
     return {
-      parts: [
-        {
-          title: 'ev800d',
-          type: 'digital',
-          description: 'the best pair of goggs you\'ll ever own',
-          price: 800.00,
-          image: 'https://via.placeholder.com/640x480.png/0066aa?text=ducimus',
-        },
-        {
-          title: 'QX7',
-          type: 'Transmitter',
-          description: 'Great beginner tx',
-          price: 79.99,
-          image: 'https://via.placeholder.com/640x480.png/0066aa?text=ducimus',
-        },
-      ],
+      parts: [],
     };
   },
   mounted() {

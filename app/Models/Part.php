@@ -15,6 +15,11 @@ class Part extends Model
     return $query->where('status', 'available')->orderBy('created_at', 'desc');
   }
 
+  public function scopeOrdered($query)
+  {
+    return $query->where('status', 'ordered')->orderBy('created_at', 'desc');
+  }
+
   // DB setup
   use HasFactory;
 
