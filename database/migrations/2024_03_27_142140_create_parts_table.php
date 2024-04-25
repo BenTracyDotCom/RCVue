@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('type');
             $table->text('description');
+            $table->float('ipaid');
             $table->float('price');
             $table->string('image');
             $table->string('status');

@@ -38,5 +38,5 @@ class Part extends Model
     return $this->belongsToMany(Cart::class, 'cart_part');
   }
 
-  protected $fillable = ['title', 'type', 'description', 'price', 'image'];
+  protected $fillable = ['title', 'type', 'description', 'ipaid', 'price', 'image'];
 }
