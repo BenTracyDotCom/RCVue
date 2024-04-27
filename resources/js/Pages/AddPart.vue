@@ -5,7 +5,7 @@ import Dropdown from '@/Components/Dropdown.vue';
 import TextInput from '@/Components/TextInput.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
-import VueSelectImage from 'vue-select-image';
+import ImageUploader from '@/Components/ImageUploader.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
 const form = useForm({
@@ -63,11 +63,7 @@ const onSelectImage = (e) => {
         <InputLabel for="price" value="Sale price" />
         <input type="number" step="0.01" id="price" v-model="form.price"/>
       </div>
-<vue-select-image
-:dataImages="dataImages"
-@onselectimage="onSelectImage"
->
-</vue-select-image>
+      <ImageUploader></ImageUploader>
       <PrimaryButton>Add Part</PrimaryButton>
     </form>
   </AuthenticatedLayout>
