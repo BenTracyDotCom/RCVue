@@ -1,4 +1,16 @@
-# How the site works:
+# Getting started:
+
+## Ensure you have a way to run and/or access Docker containers
+## Ensure you have php artisan in your PATH
+## Run the Docker container using Sail: 
+``` vendor/bin/sail up ```
+* This also begins all necessary databases and servers
+### Run all database functions through the container interface ( php artisan migrate/refresh/ seed, etc)
+### File creation can be done through either the container interface or the code editor (e.g. `php artisan make: controller UserController`)
+- Start the Vite frontend and initialize its hot swapping:
+``` npm run dev ```
+- Begin developing!
+
 
 # Initial route
 ## When you navigate to base page ('localhost' in dev):
