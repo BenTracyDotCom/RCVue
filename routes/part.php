@@ -20,5 +20,4 @@ Route::prefix('parts')->group(function () {
   })->name('parts.create');
 
 
-
 });

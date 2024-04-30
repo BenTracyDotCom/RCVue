@@ -1,11 +1,11 @@
 <script setup>
 import axios from 'axios';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import Dropdown from '@/Components/Dropdown.vue';
 import TextInput from '@/Components/TextInput.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import ImageUploader from '@/Components/ImageUploader.vue';
+import useFileList from '@/fileList.js';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
 const form = useForm({
@@ -24,9 +24,8 @@ const submit = () => {
   });
 }
 
-const onSelectImage = (e) => {
-  console.log(e)
-}
+const { files, addFiles, removeFile } = useFileList()
+
 </script>
 
 <template>
@@ -56,14 +55,21 @@ const onSelectImage = (e) => {
           <option value="vtx">Video Transmitter</option>
           <option value="vrx">Video Receiver</option>
         </select>
-        <InputLabel for="description" value="Description"/>
+        <InputLabel for="description" value="Description" />
         <textarea id="description" v-model="form.description" />
         <InputLabel for="ipaid" value="What I paid" />
-        <input type="number" step="0.01" id="ipaid" v-model="form.ipaid"/>
+        <input type="number" step="0.01" id="ipaid" v-model="form.ipaid" />
         <InputLabel for="price" value="Sale price" />
-        <input type="number" step="0.01" id="price" v-model="form.price"/>
+        <input type="number" step="0.01" id="price" v-model="form.price" />
       </div>
-      <ImageUploader></ImageUploader>
+      <ImageUploader class="drop-area" @files-dropped="addFiles" #default="{ dropZoneActive }">
+        <div v-if="dropZoneActive">
+          <div>Drop Them</div>
+        </div>
+        <div v-else>
+          <div>Drag Your Files Here</div>
+        </div>
+      </ImageUploader>
       <PrimaryButton>Add Part</PrimaryButton>
     </form>
   </AuthenticatedLayout>

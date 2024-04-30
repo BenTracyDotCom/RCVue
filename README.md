@@ -12,7 +12,7 @@
 - Begin developing!
 
 
-# Initial route
+# How it works: Initial route
 ## When you navigate to base page ('localhost' in dev):
 
 web.php handles rendering:
