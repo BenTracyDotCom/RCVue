@@ -24,7 +24,14 @@ const submit = () => {
   });
 }
 
+//This is the storage and helper functions we created
 const { files, addFiles, removeFile } = useFileList()
+
+//This lets us open a dialog to add click-uploaded files to the same state array as drag-n-dropping
+function onInputChange(e) {
+    addFiles(e.target.files)
+    e.target.value = null
+}
 
 </script>
 
@@ -63,12 +70,19 @@ const { files, addFiles, removeFile } = useFileList()
         <input type="number" step="0.01" id="price" v-model="form.price" />
       </div>
       <ImageUploader class="drop-area" @files-dropped="addFiles" #default="{ dropZoneActive }">
-        <div v-if="dropZoneActive">
-          <div>Drop Them</div>
-        </div>
-        <div v-else>
-          <div>Drag Your Files Here</div>
-        </div>
+        <label for="file-input">
+          <span v-if="dropZoneActive">
+            <span>Drop Them Here</span>
+            <span class="smaller">to add them</span>
+          </span>
+          <span v-else>
+            <span>Drag Your Files Here</span>
+            <span class="smaller">
+              or <strong><em>click here</em></strong> to select files
+            </span>
+          </span>
+          <input type="file" id="file-input" multiple @change="onInputChange" />
+        </label>
       </ImageUploader>
       <PrimaryButton>Add Part</PrimaryButton>
     </form>
