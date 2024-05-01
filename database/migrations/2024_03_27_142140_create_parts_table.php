@@ -20,7 +20,7 @@ return new class extends Migration
             $table->float('ipaid');
             $table->float('price');
             $table->string('image');
-            $table->string('status');
+            $table->string('status')->default('available');
             $table->foreignIdFor(\App\Models\Order::class)->nullable()->constrained();
         });
     }
