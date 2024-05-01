@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Part;
 use Illuminate\Http\Request;
+use \App\Rules\UrlBlob;
 
 //TODO: Match all this to my actual part schema!!!
 
@@ -27,19 +28,24 @@ class PartController extends Controller
     // validations
     $request->validate([
       'title' => 'required',
+      'type' => 'required',
       'description' => 'required',
       'ipaid' => 'required',
       'price' => 'required',
-      'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+      'image' => ['required', new UrlBlob ],
     ]);
 
     $part = new Part;
 
-    $file_name = time() . '.' . request()->image->getClientOriginalExtension();
+    $file_name = time() . '.' . request()->image;
 
     $part->title = $request->title;
+    $part->type = $request->type;
     $part->description = $request->description;
-    $part->image = $file_name;
+    $part->ipaid = $request->ipaid;
+    $part->price = $request->price;
+    $part->image = $request->image;
+
 
     $part->save();
     return redirect()->route('parts.index')->with('success', 'Part created successfully.');

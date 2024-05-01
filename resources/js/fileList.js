@@ -22,9 +22,7 @@ export default function () {
 
     function replaceFile(file) {
       const toUpload = new UploadableFile(file[0])
-      console.log(toUpload)
-      files.value = [].concat(toUpload)
-      console.log(files)
+      files.value = [ toUpload ]
     }
 
     return { files, addFiles, removeFile, replaceFile }

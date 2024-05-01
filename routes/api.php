@@ -9,6 +9,6 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::get('/parts', [PartController::class,'getAvailableParts']);
+Route::get('/parts', [PartController::class,'getAvailableParts'])->name('api.getAvailableParts');
 
-Route::get('/parts/create', [PartController::class,'']);
+Route::post('/parts', [PartController::class,'store'])->name('api.storePart');

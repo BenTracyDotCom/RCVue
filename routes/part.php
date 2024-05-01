@@ -15,9 +15,4 @@ Route::prefix('parts')->group(function () {
     return Inertia::render('AddPart');
   })->name('parts.create');
 
-  Route::post('/create', function() {
-    return Inertia::render('Welcome');
-  })->name('parts.create');
-
-
 });

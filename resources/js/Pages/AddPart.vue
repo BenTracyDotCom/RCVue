@@ -13,7 +13,6 @@ import { Head, Link, useForm } from '@inertiajs/vue3';
 //TODO: simplify to add single file and add to form before submitting
 
 const form = useForm({
-  _method: 'put',
   title: '',
   type: '',
   description: '',
@@ -23,8 +22,8 @@ const form = useForm({
 })
 
 const submit = () => {
-  console.log(form)
-  form.post(route('parts.create'), {
+  console.log(form, ' form')
+  form.post(route('api.storePart'), {
     onFinish: () => form.reset()
   });
 }
@@ -35,6 +34,7 @@ const { files, addFiles, removeFile, replaceFile } = useFileList()
 //This lets us open a dialog to add click-uploaded files to the same state array as drag-n-dropping
 function onInputChange(e) {
   replaceFile(e.target.files)
+  form.image = URL.createObjectURL(e.target.files[0])
   e.target.value = null
 }
 

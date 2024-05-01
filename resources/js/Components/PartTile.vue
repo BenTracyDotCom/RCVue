@@ -15,7 +15,7 @@
       done: {default: false, type: Boolean},
       title: {required: true, type: String},
       type: {required: true, type: String},
-      description: {required: true, type: Text},
+      description: {required: true, type: String},
       price: {required: true, type: Number},
       image: {required: true, type: String}
     },
