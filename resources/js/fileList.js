@@ -20,7 +20,14 @@ export default function () {
         if (index > -1) files.value.splice(index, 1)
     }
 
-    return { files, addFiles, removeFile }
+    function replaceFile(file) {
+      const toUpload = new UploadableFile(file[0])
+      console.log(toUpload)
+      files.value = [].concat(toUpload)
+      console.log(files)
+    }
+
+    return { files, addFiles, removeFile, replaceFile }
 }
 
 class UploadableFile {

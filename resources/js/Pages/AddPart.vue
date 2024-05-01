@@ -6,16 +6,20 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import ImageUploader from '@/Components/ImageUploader.vue';
 import useFileList from '@/fileList.js';
+import createUploader from '@/file-uploader.js';
 import  FilePreview  from  '@/Components/FilePreview.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
+//TODO: simplify to add single file and add to form before submitting
+
 const form = useForm({
+  _method: 'put',
   title: '',
   type: '',
   description: '',
-  ipaid: 0.00,
-  price: 0.00,
-  image: ''
+  ipaid: null,
+  price: null,
+  image: null
 })
 
 const submit = () => {
@@ -26,13 +30,18 @@ const submit = () => {
 }
 
 //This is the storage and helper functions we created
-const { files, addFiles, removeFile } = useFileList()
+const { files, addFiles, removeFile, replaceFile } = useFileList()
 
 //This lets us open a dialog to add click-uploaded files to the same state array as drag-n-dropping
 function onInputChange(e) {
-  addFiles(e.target.files)
+  replaceFile(e.target.files)
   e.target.value = null
 }
+
+//This will be my API endpoint to store the file data in my database
+const stuff = 'error.err'
+
+const { uploadFiles } = createUploader(stuff)
 
 </script>
 
@@ -70,19 +79,19 @@ function onInputChange(e) {
         <InputLabel for="price" value="Sale price" />
         <input type="number" step="0.01" id="price" v-model="form.price" />
       </div>
-      <ImageUploader class="drop-area" @files-dropped="addFiles" #default="{ dropZoneActive }">
+      <ImageUploader class="drop-area" @files-dropped="replaceFile" #default="{ dropZoneActive }">
         <label for="file-input">
           <span v-if="dropZoneActive">
-            <span>Drop Them Here</span>
-            <span class="smaller">to add them</span>
+            <span>Drop It Here</span>
+            <span class="smaller">to add/replace it</span>
           </span>
           <span v-else>
-            <span>Drag Your Files Here</span>
+            <span>Drag Your File Here</span>
             <span class="smaller">
-              or <strong><em>click here</em></strong> to select files
+              or <strong><em>click here</em></strong> to select file
             </span>
           </span>
-          <input type="file" id="file-input" multiple @change="onInputChange" />
+          <input type="file" id="file-input" @change="onInputChange" />
         </label>
         <ul class="image-list" v-show="files.length">
           <FilePreview  v-for="file of files" :key="file.id" :file="file" tag="li" @remove="removeFile" />
