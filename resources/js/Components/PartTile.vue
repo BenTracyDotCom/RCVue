@@ -1,17 +1,15 @@
 <template>
-  <div>
-    <label for="part">{{ label }}</label>
-    <h1>{{ title }}</h1>
-    <p>{{ description }}</p>
-    <div>{{ price }}</div>
-    <img :src="image" />
+  <div class="shadow-xl min-h-128 w-64 rounded-lg border-2 my-4">
+    <h1 class="text-2xl font-bold text-center">{{ title }}</h1>
+    <img :src="image" class="h-64 mx-auto"/>
+    <p class="line-clamp-3 h-14 my-4 px-2 text-center text-sm font-bold">{{ description }}</p>
+    <div class="text-center italic">Sale price: ${{ price }}</div>
   </div>
 </template>
 <script>
-//Define the kind of props this component wants
   export default {
     props: {
-      label: {required: true, type: String},
+      //TODO: icon for 'In Cart'
       done: {default: false, type: Boolean},
       title: {required: true, type: String},
       type: {required: true, type: String},

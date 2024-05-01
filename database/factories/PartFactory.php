@@ -35,7 +35,7 @@ class PartFactory extends Factory
         'vtx',
         'vrx'
       ]),
-      'description' => fake()->paragraphs(3, true),
+      'description' => fake()->paragraph(3, false),
       'ipaid' => fake()->randomFloat(2, 0.25),
       'price' => fake()->randomFloat(2, 0.25),
       'image' => fake()->imageUrl(244, 244),

@@ -6,13 +6,13 @@ import PartTile from '../Components/PartTile.vue';
 
 <template>
   <div>
-    <h1>Parts page!!</h1>
-    <ul>
-      <li v-for="part in parts" :key="part.id">
-        <part-tile label="A Part Apart" :title="part.title" :type="part.type" :description="part.description"
-          :price="part.price" :image="part.image"></part-tile>
-      </li>
-    </ul>
+    <h1 class="text-center text-3xl font-bold my-8">Parts page!!</h1>
+    <div className="flex flex-wrap space-x-3 mx-5">
+      <div v-for="part in parts" :key="part.id">
+        <part-tile :title="part.title" :type="part.type" :description="part.description" :price="part.price"
+          :image="part.image"></part-tile>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -32,11 +32,11 @@ export default {
   methods: {
     fetchAvailableParts() {
       axios.get('api/parts')
-      .then(res => {
-        console.log('ziggy found this one, ennit')
-        this.parts = res.data;
-      })
-      .catch(console.error)
+        .then(res => {
+          console.log('ziggy found this one, ennit')
+          this.parts = res.data;
+        })
+        .catch(console.error)
     }
   }
 }
